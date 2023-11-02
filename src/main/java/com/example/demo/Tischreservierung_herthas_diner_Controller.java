@@ -14,22 +14,24 @@ public class Tischreservierung_herthas_diner_Controller {
 
     Logger logger = LoggerFactory.getLogger(Tischreservierung_herthas_diner_Controller.class);
 
-    @PostMapping("/things")
-    public Tischreservierung_herthas_diner createThing(@RequestBody Tischreservierung_herthas_diner thing) {
-        return service.save(thing);
+    @PostMapping("/reservierung")
+    public Tischreservierung_herthas_diner createTischreservierung_herthas_diner(@RequestBody Tischreservierung_herthas_diner reservierung) {
+        return service.save(reservierung);
     }
 
-    @GetMapping("/things/{id}")
-    public Tischreservierung_herthas_diner getThing(@PathVariable String id) {
-        logger.info("GET request on route things with {}", id);
-        Long thingId = Long.parseLong(id);
-        return service.get(thingId);
+    @GetMapping("/reservierung/{id}")
+    public Tischreservierung_herthas_diner getTischreservierung_herthas_diner(@PathVariable String id) {
+        logger.info("GET request on route reservierung with {}", id);
+        Long reservierungId = Long.parseLong(id);
+        return service.get(reservierungId);
     }
 
-    @GetMapping("/things")
-    public List<Tischreservierung_herthas_diner> getAllThings() {
+    @GetMapping("/reservierung")
+    public List<Tischreservierung_herthas_diner> getAllTischreservierung_herthas_diner() {
         return service.getAll();
     }
+
+
 
 
 }

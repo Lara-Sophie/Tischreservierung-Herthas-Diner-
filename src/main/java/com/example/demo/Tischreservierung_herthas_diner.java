@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import jakarta.persistence.*;
+
 @Entity
 public class Tischreservierung_herthas_diner {
         @Id
@@ -45,11 +46,11 @@ public class Tischreservierung_herthas_diner {
             if (this == o) return true;
             if (!(o instanceof Tischreservierung_herthas_diner)) return false;
 
-            Tischreservierung_herthas_diner tischreservierung= (Tischreservierung_herthas_diner) o;
+            Tischreservierung_herthas_diner reservierung= (Tischreservierung_herthas_diner) o;
 
-            if (getPrice() != tischreservierung.getPrice()) return false;
-            if (getId() != null ? !getId().equals(tischreservierung.getId()) : tischreservierung.getId() != null) return false;
-            return getName() != null ? getName().equals(tischreservierung.getName()) : tischreservierung.getName() == null;
+            if (getPrice() != reservierung.getPrice()) return false;
+            if (getId() != null ? !getId().equals(reservierung.getId()) : reservierung.getId() != null) return false;
+            return getName() != null ? getName().equals(reservierung.getName()) : reservierung.getName() == null;
         }
 
         @Override
@@ -62,7 +63,7 @@ public class Tischreservierung_herthas_diner {
 
         @Override
         public String toString() {
-            return "Thing{" +
+            return "Tischreservierung_herthas_diner{" +
                     "id=" + id +
                     ", name='" + name + '\'' +
                     ", price=" + price +

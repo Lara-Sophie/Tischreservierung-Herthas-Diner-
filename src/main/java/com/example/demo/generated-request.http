@@ -1,0 +1,11 @@
+###
+POST http://localhost:8080/things
+Content-Type: application/json
+
+{
+  "id": "1",
+    "name": "kabel",
+    "description": "50"
+
+
+}
