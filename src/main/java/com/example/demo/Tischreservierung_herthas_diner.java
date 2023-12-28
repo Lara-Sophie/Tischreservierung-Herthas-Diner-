@@ -2,6 +2,7 @@ package com.example.demo;
 
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 
 @Entity
@@ -10,13 +11,13 @@ public class Tischreservierung_herthas_diner {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int tischnummer;
-    private date zeit;
-    private date datum;
+    private Date zeit;
+    private Date datum;
     private int personen;
 
     public Tischreservierung_herthas_diner() {}
 
-    public Tischreservierung_herthas_diner(int tischnummer, int id, date zeit, date datum) {
+    public Tischreservierung_herthas_diner(int tischnummer, int id, Date zeit, Date datum) {
         this.tischnummer = tischnummer;
         this.id = id;
         this.zeit = zeit;
@@ -27,13 +28,13 @@ public class Tischreservierung_herthas_diner {
 
     public void setTischnummer(int tischnummer) {this.tischnummer = tischnummer;}
 
-    public date getZeit() {return zeit;}
+    public Date getZeit() {return zeit;}
 
-    public void setZeit(date zeit) {this.zeit = zeit;}
+    public void setZeit(Date zeit) {this.zeit = zeit;}
 
-    public date getDatum() {return datum;}
+    public Date getDatum() {return datum;}
 
-    public void setDatum(date datum) {this.datum = datum;}
+    public void setDatum(Date datum) {this.datum = datum;}
 
     public int getPersonen() {return personen;}
 
