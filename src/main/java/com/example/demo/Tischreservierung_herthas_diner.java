@@ -15,7 +15,6 @@ public class Tischreservierung_herthas_diner {
     private Date datum;
     private int personen;
 
-    public Tischreservierung_herthas_diner() {}
 
     public Tischreservierung_herthas_diner(int tischnummer, int id, Date zeit, Date datum) {
         this.tischnummer = tischnummer;
@@ -23,6 +22,7 @@ public class Tischreservierung_herthas_diner {
         this.zeit = zeit;
         this.datum = datum;
     }
+
 
     public int getTischnummer() {return tischnummer;}
 

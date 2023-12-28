@@ -3,7 +3,7 @@ package com.example.demo;
 import java.util.LinkedList;
 import java.util.Objects;
 
-public class Kunde {
+public class  Kunde {
     int id;
     String name;
     LinkedList <String> allergien;
