@@ -3,7 +3,7 @@ package com.example.demo;
 import java.util.Objects;
 
 public class Tisch {
-    int id;
+    int id = 1;
     int anzahlPlaetze;
     boolean reserviert;
 
@@ -12,6 +12,7 @@ public class Tisch {
         this.anzahlPlaetze = anzahlPlaetze;
         this.reserviert = reserviert;
     }
+
 
     public int getId() {
         return id;
@@ -25,9 +26,7 @@ public class Tisch {
         return reserviert;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
     public void setAnzahlPlaetze(int anzahlPlaetze) {
         this.anzahlPlaetze = anzahlPlaetze;
