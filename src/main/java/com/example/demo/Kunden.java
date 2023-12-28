@@ -11,7 +11,7 @@ public class Kunden {
         return kunden;
     }
 
-    public void setKunden(LinkedList<Kunde> kunden) {
+    public Kunden(LinkedList<Kunde> kunden) {
         this.kunden = kunden;
     }
 
