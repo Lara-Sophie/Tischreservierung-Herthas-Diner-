@@ -6,13 +6,14 @@ import java.util.LinkedList;
 import java.util.Objects;
 
 
+
+
 @Entity
 public class Tischreservierung_herthas_diner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    LinkedList <Tisch> tische;
-
+    public LinkedList <Tisch> tische;
     private Date zeit;
     private Date datum;
     private int personen;

@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Tische {
     LinkedList<Tisch> tische;
 
-    public Tische(LinkedList<Tisch> tische) {
+    public Tische() {
         this.tische = tische;
     }
 
