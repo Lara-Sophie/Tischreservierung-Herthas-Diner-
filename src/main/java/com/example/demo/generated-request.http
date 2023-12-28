@@ -1,11 +1,11 @@
 ###
-POST http://localhost:8080/things
+POST http://localhost:8080/reservierung
 Content-Type: application/json
 
 {
   "id": "1",
-    "name": "kabel",
-    "description": "50"
+  "name": "kabel",
+  "description": "50"
 
 
 }
