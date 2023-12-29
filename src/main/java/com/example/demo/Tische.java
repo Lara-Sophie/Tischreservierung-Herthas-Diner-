@@ -33,29 +33,18 @@ public class Tische {
     // Add-Methode: Füge einen Tisch hinzu
 
     // Add-Methode: Füge einen Tisch an einem freien Platz hinzu
-    public void addTisch(Tisch tisch) {
 
-            // Überprüfe, ob die ID bereits vorhanden ist
-            boolean idAlreadyExists = tische.stream().anyMatch(existingTisch -> existingTisch.getId() == tisch.getId());
 
-            if (!idAlreadyExists) {
-                // Finde den ersten freien Platz in der Liste
-                int freeIndex = 0;
-                while (freeIndex < tische.size() && tische.get(freeIndex) != null) {
-                    freeIndex++;
-                }
+    public void addTisch(int anzahlPlaetze, boolean reserviert) {
+        // Find the first free slot in the list
+        int freeIndex = 0;
+        while (freeIndex < tische.size() && tische.get(freeIndex) != null) {
+            freeIndex++;
+        }
 
-                // Füge den Tisch an der gefundenen Position hinzu
-                if (freeIndex < tische.size()) {
-                    tische.set(freeIndex, tisch);
-                } else {
-                    tische.add(tisch); // Füge den Tisch am Ende der Liste hinzu, falls alle Plätze belegt sind
-                }
-            } else {
-                System.out.println("Ein Tisch mit dieser ID existiert bereits.");
-            }
-
+        new Tisch(freeIndex, anzahlPlaetze, reserviert);
     }
+
 
     // Delete-Methode: Lösche einen Tisch
     public void deleteTisch(Tisch tisch){
