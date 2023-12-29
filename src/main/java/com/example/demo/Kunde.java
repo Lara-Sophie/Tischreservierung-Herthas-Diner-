@@ -11,10 +11,18 @@ public class  Kunde {
     String telefonnummer;
     LinkedList <Tischreservierung_herthas_diner> tischreservierung_herthas_diner;
 
-    public Kunde(String name, String allergien, String email, String telefonnummer, LinkedList<Tischreservierung_herthas_diner> tischreservierung_herthas_diner) {
+    public Kunde(int id, String name, String email, String telefonnummer, LinkedList<Tischreservierung_herthas_diner> tischreservierung_herthas_diner) {
         this.id = id;
         this.name = name;
+        this.email = email;
+        this.telefonnummer = telefonnummer;
         this.tischreservierung_herthas_diner = tischreservierung_herthas_diner;
+    }
+
+    public int getId() {return id; }
+
+    public LinkedList<Tischreservierung_herthas_diner> getTischreservierung_herthas_diner() {
+        return tischreservierung_herthas_diner;
     }
 
     public String getName() {
