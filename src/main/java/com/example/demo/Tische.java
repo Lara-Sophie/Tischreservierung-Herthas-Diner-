@@ -31,18 +31,16 @@ public class Tische {
     }
 
     // Add-Methode: Füge einen Tisch hinzu
-
-    // Add-Methode: Füge einen Tisch an einem freien Platz hinzu
-
-
     public void addTisch(int anzahlPlaetze, boolean reserviert) {
         // Find the first free slot in the list
         int freeIndex = 0;
         while (freeIndex < tische.size() && tische.get(freeIndex) != null) {
             freeIndex++;
+            System.out.println("freeIndex: " + freeIndex);
         }
-
-        new Tisch(freeIndex, anzahlPlaetze, reserviert);
+        System.out.println("Ahh  " + freeIndex + " behh " + tische.size());
+        // Add the new Tisch to the list
+        tische.add(freeIndex, new Tisch(freeIndex, anzahlPlaetze, reserviert));
     }
 
 
