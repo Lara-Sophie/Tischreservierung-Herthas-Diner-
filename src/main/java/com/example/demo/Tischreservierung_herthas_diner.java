@@ -13,6 +13,7 @@ public class Tischreservierung_herthas_diner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @OneToMany(mappedBy = "tischreservierung", cascade = CascadeType.ALL)
     public LinkedList <Tisch> tische;
     private Date zeit;
     private Date datum;

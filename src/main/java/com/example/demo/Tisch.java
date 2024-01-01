@@ -1,17 +1,28 @@
 package com.example.demo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.util.Objects;
 
+@Entity
 public class Tisch {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     int id = 1;
     int anzahlPlaetze;
     boolean reserviert;
 
-    public Tisch(int id, int anzahlPlaetze, boolean reserviert) {
-        this.id = id;
-        this.anzahlPlaetze = anzahlPlaetze;
-        this.reserviert = reserviert;
-    }
+
+
+    //public Tisch(int id, int anzahlPlaetze, boolean reserviert) {
+    //this.id = id;
+    //this.anzahlPlaetze = anzahlPlaetze;
+    //this.reserviert = reserviert;
+    //}
 
 
     public int getId() {
