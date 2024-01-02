@@ -21,7 +21,7 @@ import java.util.List;
         }
 
         @PostMapping
-        public ResponseEntity<Reservierung> createReservierung(@RequestParam Long kundenId, @RequestParam List<Long> tischIds, @RequestParam LocalDateTime startZeit, @RequestParam LocalDateTime endZeit ){
+        public ResponseEntity<Reservierung> createReservierung(@RequestParam Long kundenId, @RequestParam List<Integer> tischIds, @RequestParam LocalDateTime startZeit, @RequestParam LocalDateTime endZeit ){
             Reservierung reservierung = reservierungService.createReservierung(kundenId, tischIds, startZeit, endZeit);
             return ResponseEntity.ok(reservierung);
         }

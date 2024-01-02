@@ -41,7 +41,7 @@ public class ReservierungService {
         return repository.findAll();
     }
 
-    public Reservierung createReservierung(Long kundenId, List<Long> tischIds, LocalDateTime startZeit, LocalDateTime endZeit) {
+    public Reservierung createReservierung(Long kundenId, List<Integer> tischIds, LocalDateTime startZeit, LocalDateTime endZeit) {
         // Hole Kunde und Tische basierend auf IDs
         Optional<Kunde> kundeOptional = Optional.ofNullable(kundeRepository.findById(kundenId));
         Kunde kunde = kundeOptional.orElseThrow(() -> new EntityNotFoundException("Kunde mit ID " + kundenId + " wurde nicht gefunden."));
@@ -50,7 +50,7 @@ public class ReservierungService {
 
         // Überprüfe die Verfügbarkeit jedes Tisches
         for (Tisch tisch : tische) {
-            if (!isTischVerfuegbar(tisch, startZeit, endZeit)) {
+            if (tisch.isReserviert()) {
                 throw new RuntimeException("Tisch " + tisch.getId() + " ist im gewählten Zeitraum nicht verfügbar.");
             }
         }
@@ -66,8 +66,7 @@ public class ReservierungService {
     }
 
     private boolean isTischVerfuegbar(Tisch tisch, LocalDateTime start, LocalDateTime ende) {
-        // Implementiere Logik, um zu überprüfen, ob der Tisch im angegebenen Zeitraum verfügbar ist.
-        // Dies könnte ein Aufruf an das Repository sein, um bestehende Reservierungen zu überprüfen.
-        return true; // Beispielimplementation
+        if (tisch.)
+        return true;
     }
 }
