@@ -16,8 +16,9 @@ import java.util.Objects;
 public class Reservierung {
 
     @Id
+    @Column (name = "reservierungid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int reservierungid;
     @Column (name = "personenanzahl")
     int personen;
     @Column (name = "startzeit")
@@ -44,11 +45,11 @@ public class Reservierung {
 
 
     public int getId() {
-        return id;
+        return reservierungid;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.reservierungid = id;
     }
 
     public Kunde getKunde() {

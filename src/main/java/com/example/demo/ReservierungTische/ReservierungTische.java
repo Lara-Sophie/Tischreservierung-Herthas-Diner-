@@ -10,8 +10,7 @@ import java.util.Objects;
 @Table (name = "reservierungtische")
 public class ReservierungTische {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EmbeddedId
     private ReservierungTischeID reservierungtischeID;
 
 
@@ -20,16 +19,43 @@ public class ReservierungTische {
 
 
     @ManyToOne
-    @JoinColumn(name = "tischid")
     private Tisch tisch;
 
     @ManyToOne
-    @JoinColumn(name = "reservierungid")
     private Reservierung reservierung;
 
     public ReservierungTische() {
         // Default constructor required by JPA
     }
+
+    public ReservierungTische(Reservierung reservierung, Tisch tisch, boolean b) {
+    }
+
+
+
+    public boolean isReserviert() {
+        return reserviert;
+    }
+
+    public void setReserviert(boolean reserviert) {
+        this.reserviert = reserviert;
+    }
+
+    public Tisch getTisch() {
+        return tisch;
+    }
+
+    public void setTisch(Tisch tisch) {
+        this.tisch = tisch;
+    }
+
+    public Reservierung getReservierung() {
+        return reservierung;
+    }
+
+    public void setReservierung(Reservierung reservierung) {
+        this.reservierung = reservierung;
+     }
 
     public ReservierungTischeID getReservierungtischeID() {
         return reservierungtischeID;
@@ -43,11 +69,11 @@ public class ReservierungTische {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ReservierungTische that)) return false;
-        return reserviert == that.reserviert && Objects.equals(getReservierungtischeID(), that.getReservierungtischeID()) && Objects.equals(tisch, that.tisch) && Objects.equals(reservierung, that.reservierung);
+        return reserviert == that.reserviert && Objects.equals(getReservierungtischeID(), that.getReservierungtischeID()) && Objects.equals(tisch, that.tisch) ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getReservierungtischeID(), reserviert, tisch, reservierung);
+        return Objects.hash(getReservierungtischeID(), reserviert, tisch);
     }
 }

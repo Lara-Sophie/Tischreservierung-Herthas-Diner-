@@ -20,7 +20,7 @@ public class Tisch {
 
     @Column(name = "anzahlplaetze")
     private int anzahlPlaetze;
-    @OneToMany(mappedBy = "tische")
+    @OneToMany(mappedBy = "tisch")
     private List<ReservierungTische> reservierungTische = new LinkedList<>();
 
 
