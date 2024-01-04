@@ -3,8 +3,10 @@ package com.example.demo.Tisch;
 
 
 import com.example.demo.Reservierung.Reservierung;
+import com.example.demo.ReservierungTische.ReservierungTische;
 import jakarta.persistence.*;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,12 +17,11 @@ public class Tisch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "belegt")
-    private boolean reserviert;
+
     @Column(name = "anzahlplaetze")
     private int anzahlPlaetze;
-    @ManyToMany(mappedBy = "tische")
-    private List<Reservierung> reservierungen;
+    @OneToMany(mappedBy = "tisch")
+    private List<ReservierungTische> reservierungTische = new LinkedList<>();
 
 
 
@@ -46,17 +47,8 @@ public class Tisch {
         this.anzahlPlaetze = anzahlPlaetze;
     }
 
-    public boolean isReserviert() {
-        return reserviert;
-    }
 
-    public void setReserviert(boolean reserviert) {
-        this.reserviert = reserviert;
-    }
 
-    public List<Reservierung> getReservierung() {
-        return reservierungen;
-    }
 
 
 
@@ -64,11 +56,11 @@ public class Tisch {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Tisch tisch)) return false;
-        return getId() == tisch.getId() && getAnzahlPlaetze() == tisch.getAnzahlPlaetze() && isReserviert() == tisch.isReserviert() && Objects.equals(getReservierung(), tisch.getReservierung());
+        return getId() == tisch.getId() && getAnzahlPlaetze() == tisch.getAnzahlPlaetze() && Objects.equals(reservierungTische, tisch.reservierungTische);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getAnzahlPlaetze(), isReserviert(), getReservierung());
+        return Objects.hash(getId(), getAnzahlPlaetze(), reservierungTische);
     }
 }

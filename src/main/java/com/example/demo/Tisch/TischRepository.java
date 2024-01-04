@@ -6,6 +6,8 @@ import java.util.List;
 
 @Repository
 public interface TischRepository extends JpaRepository<Tisch, Integer> {
-    List<Tisch> findAllById(List<Long> tischIds);
+    default List<Tisch> findAllById(List<Integer> tischIds) {
+        return null;
+    }
     // Standard JPA Repository-Methoden
 }

@@ -4,6 +4,7 @@ import com.example.demo.Reservierung.Reservierung;
 import jakarta.persistence.*;
 import java.util.LinkedList;
 import java.util.Objects;
+import java.util.Optional;
 
 @Entity
 @Table(name = "kunden")
@@ -99,4 +100,6 @@ public class Kunde {
     public int hashCode() {
         return Objects.hash(getId(), getName(), getEmail(), getTelefonnummer(), getAllergien(), getReservierung());
     }
+
+
 }

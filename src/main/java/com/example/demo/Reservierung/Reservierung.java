@@ -1,11 +1,13 @@
 package com.example.demo.Reservierung;
 
 import com.example.demo.Kunde.Kunde;
+import com.example.demo.ReservierungTische.ReservierungTische;
 import com.example.demo.Tisch.Tisch;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,8 +16,9 @@ import java.util.Objects;
 public class Reservierung {
 
     @Id
+    @Column (name = "reservierungid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int reservierungid;
     @Column (name = "personenanzahl")
     int personen;
     @Column (name = "startzeit")
@@ -29,13 +32,9 @@ public class Reservierung {
     @JoinColumn(name = "kundenid")
     private Kunde kunde;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "reservierungtische",
-            joinColumns = @JoinColumn(name = "reservierungid"),
-            inverseJoinColumns = @JoinColumn(name = "tischid")
-    )
-    private List<Tisch> tische;
+    @OneToMany(mappedBy = "reservierung")
+    private List<ReservierungTische> reservierungTische = new LinkedList<>();
+
 
 
     public Reservierung() {
@@ -46,11 +45,11 @@ public class Reservierung {
 
 
     public int getId() {
-        return id;
+        return reservierungid;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.reservierungid = id;
     }
 
     public Kunde getKunde() {
@@ -61,13 +60,6 @@ public class Reservierung {
         this.kunde = kunde;
     }
 
-    public List<Tisch> getTische() {
-        return tische;
-    }
-
-    public void setTische(List<Tisch> tische) {
-        this.tische = tische;
-    }
 
     public LocalDateTime getStartzeit() {
         return Startzeit;
@@ -98,11 +90,11 @@ public class Reservierung {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Reservierung that)) return false;
-        return getId() == that.getId() && getPersonen() == that.getPersonen() && Objects.equals(getKunde(), that.getKunde()) && Objects.equals(getTische(), that.getTische()) && Objects.equals(getStartzeit(), that.getStartzeit()) && Objects.equals(getEndzeit(), that.getEndzeit());
+        return getId() == that.getId() && getPersonen() == that.getPersonen() && Objects.equals(getKunde(), that.getKunde())  && Objects.equals(getStartzeit(), that.getStartzeit()) && Objects.equals(getEndzeit(), that.getEndzeit());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getKunde(), getTische(), getStartzeit(), getEndzeit(), getPersonen());
+        return Objects.hash(getId(), getKunde(), getStartzeit(), getEndzeit(), getPersonen());
     }
 }
