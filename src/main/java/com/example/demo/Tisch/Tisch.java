@@ -1,32 +1,4 @@
 package com.example.demo.Tisch;
-
-<<<<<<< HEAD:src/main/java/com/example/demo/Tisch.java
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import java.util.Objects;
-
-@Entity
-public class Tisch {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    int id = 1;
-    int anzahlPlaetze;
-    boolean reserviert;
-
-
-
-    //public Tisch(int id, int anzahlPlaetze, boolean reserviert) {
-    //this.id = id;
-    //this.anzahlPlaetze = anzahlPlaetze;
-    //this.reserviert = reserviert;
-    //}
-=======
-
-
 import com.example.demo.Reservierung.Reservierung;
 import com.example.demo.ReservierungTische.ReservierungTische;
 import jakarta.persistence.*;
@@ -38,6 +10,7 @@ import java.util.Objects;
 @Entity
 @Table (name = "tische")
 public class Tisch {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -53,7 +26,7 @@ public class Tisch {
 public Tisch() {
         // Default constructor required by JPA
     }
->>>>>>> 9c65e663e34e9cc6f3ca3e2469e0c1dd580a2006:src/main/java/com/example/demo/Tisch/Tisch.java
+
 
 
 
