@@ -1,10 +1,12 @@
-package com.example.demo.Kunde;
+package com.example.demo.kunde;
 
-import com.example.demo.Reservierung.Reservierung;
+import com.example.demo.reservierung.Reservierung;
 import jakarta.persistence.*;
+
+
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Entity
 @Table(name = "kunden")
@@ -12,7 +14,7 @@ public class Kunde {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
 
     @Column (name = "name")
@@ -26,8 +28,8 @@ public class Kunde {
     @Column (name = "allergien")
     private String allergien;
 
-    @OneToMany(mappedBy = "kunde", cascade = CascadeType.ALL)
-    private LinkedList<Reservierung> reservierung;
+    @OneToMany(mappedBy = "kunde")
+    private List<Reservierung> reservierung = new LinkedList<>();
 
 
 
@@ -78,11 +80,11 @@ public class Kunde {
         this.allergien = allergien;
     }
 
-    public LinkedList<Reservierung> getReservierung() {
+    public List<Reservierung> getReservierung() {
         return reservierung;
     }
 
-    public void setReservierung(LinkedList<Reservierung> reservierung) {
+    public void setReservierung(List<Reservierung> reservierung) {
         this.reservierung = reservierung;
     }
 

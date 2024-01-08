@@ -1,14 +1,11 @@
-package com.example.demo.Reservierung;
+package com.example.demo.reservierung;
 
-import com.example.demo.Kunde.Kunde;
-import com.example.demo.ReservierungTische.ReservierungTische;
-import com.example.demo.Tisch.Tisch;
+import com.example.demo.kunde.Kunde;
+import com.example.demo.tischReservierung.TischSlot;
+
 import jakarta.persistence.*;
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,7 +15,7 @@ public class Reservierung {
     @Id
     @Column (name = "reservierungid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int reservierungid;
+    private Integer reservierungid;
     @Column (name = "personenanzahl")
     int personen;
     @Column (name = "startzeit")
@@ -28,20 +25,20 @@ public class Reservierung {
 
 
 
+
     @ManyToOne
     @JoinColumn(name = "kundenid")
     private Kunde kunde;
 
-    @OneToMany(mappedBy = "reservierung")
-    private List<ReservierungTische> reservierungTische = new LinkedList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tischslotid", referencedColumnName = "tischslotid")
+    private TischSlot tischSlot;
 
 
 
     public Reservierung() {
         // Default constructor required by JPA
     }
-
-
 
 
     public int getId() {
@@ -84,6 +81,7 @@ public class Reservierung {
     public void setPersonen(int personen) {
         this.personen = personen;
     }
+
 
 
     @Override
