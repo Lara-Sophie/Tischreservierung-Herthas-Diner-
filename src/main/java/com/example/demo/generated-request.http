@@ -33,24 +33,24 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/tischSlots
+POST http://localhost:8080/tischSlot
 Content-Type: application/json
 
 {
   "tischId": 2,
 
-  "startzeit":
+  "startzeit": "2024-02-01T18:00:00.000000"
 
 }
 
 
 ###
-DELETE http://localhost:8080/Kunden/1
+DELETE http://localhost:8080/kunden/1
 Content-Type: application/json
 
 
 ###
-GET http://localhost:8080/kunden/1
+GET http://localhost:8080/reservierungen
 Content-Type: application/json
 
 

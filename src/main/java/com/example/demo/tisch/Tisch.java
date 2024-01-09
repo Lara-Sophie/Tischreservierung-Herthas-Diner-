@@ -1,6 +1,7 @@
 package com.example.demo.tisch;
 import com.example.demo.tischReservierung.TischSlot;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class Tisch {
     @Column(name = "anzahlplaetze")
     private int anzahlPlaetze;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "tisch")
     private List<TischSlot> tischSlots;
 
@@ -44,6 +46,18 @@ public Tisch() {
 
     public void setAnzahlPlaetze(int anzahlPlaetze) {
         this.anzahlPlaetze = anzahlPlaetze;
+    }
+
+    public List<TischSlot> getTischSlots() {
+        return tischSlots;
+    }
+
+    public void removeTisch(TischSlot tischSlot) {
+        tischSlots.remove(tischSlot);
+    }
+
+    public void addTischSlot(TischSlot tischSlot) {
+        tischSlots.add(tischSlot);
     }
 
 

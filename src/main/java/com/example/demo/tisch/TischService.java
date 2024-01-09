@@ -2,6 +2,7 @@ package com.example.demo.tisch;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.demo.tischReservierung.TischSlot;
 
 import java.util.List;
 
@@ -16,6 +17,11 @@ public class TischService {
     }
 
     public void delete(int id) {
+        Tisch tisch = repository.findById(id).orElseThrow(() -> new RuntimeException("Tisch nicht gefunden"));
+        List<TischSlot> tischSlots = tisch.getTischSlots();
+
+
+
         repository.deleteById(id);
     }
 

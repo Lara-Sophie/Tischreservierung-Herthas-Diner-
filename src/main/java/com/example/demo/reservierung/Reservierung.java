@@ -3,6 +3,7 @@ package com.example.demo.reservierung;
 import com.example.demo.kunde.Kunde;
 import com.example.demo.tischReservierung.TischSlot;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -15,11 +16,13 @@ public class Reservierung {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reservierungid;
 
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "kundenid")
     private Kunde kunde;
 
+
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tischslotid", referencedColumnName = "tischslotid")
     private TischSlot tischSlot;

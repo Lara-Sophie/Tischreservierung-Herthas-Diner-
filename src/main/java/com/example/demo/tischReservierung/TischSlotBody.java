@@ -11,7 +11,7 @@ public class TischSlotBody {
     private int tischId;
 
     @JsonProperty("startzeit")
-    private LocalDateTime Startzeit;
+    private String Startzeit;
 
 
 
@@ -26,11 +26,11 @@ public class TischSlotBody {
         this.tischId = tischId;
     }
 
-    public LocalDateTime getStartzeit() {
+    public String getStartzeit() {
         return Startzeit;
     }
 
-    public void setStartzeit(LocalDateTime startzeit) {
+    public void setStartzeit(String startzeit) {
         Startzeit = startzeit;
     }
 

@@ -23,13 +23,16 @@ public class TischSlotService {
 
     public TischSlot save(TischSlotBody tischSlotBody) {
         TischSlot tischSlot = new TischSlot();
+        tischSlot.setTischslotid(1);
 
-        tischSlot.setStartzeit(tischSlotBody.getStartzeit());
-        tischSlot.setEndzeit(tischSlotBody.getStartzeit().plusHours(1));
+        String startzeit_String = tischSlotBody.getStartzeit();
+        tischSlot.setStartzeit(LocalDateTime.parse(startzeit_String));
+        tischSlot.setEndzeit(LocalDateTime.parse(startzeit_String).plusHours(2));
         tischSlot.setReserviert(false);
 
         Tisch tisch = tischRepository.findById(tischSlotBody.getTischId()).orElseThrow(() -> new RuntimeException("Tisch nicht gefunden"));
         tischSlot.setTisch(tisch);
+        tisch.addTischSlot(tischSlot);
 
         return repository.save(tischSlot);
     }

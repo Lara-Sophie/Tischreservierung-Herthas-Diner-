@@ -1,6 +1,7 @@
 package com.example.demo.kunde;
 
 import com.example.demo.reservierung.Reservierung;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 
@@ -28,6 +29,7 @@ public class Kunde {
     @Column (name = "allergien")
     private String allergien;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "kunde")
     private List<Reservierung> reservierung = new LinkedList<>();
 

@@ -2,6 +2,7 @@ package com.example.demo.tischReservierung;
 
 import com.example.demo.reservierung.Reservierung;
 import com.example.demo.tisch.Tisch;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -26,10 +27,11 @@ public class TischSlot {
     private boolean reserviert;
 
 
-
+    @JsonIgnore
     @OneToOne(mappedBy = "tischSlot")
     private Reservierung reservierung;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "tischid", nullable = false)
     private Tisch tisch;
@@ -77,5 +79,14 @@ public class TischSlot {
 
     public void setTisch(Tisch tisch) {
         this.tisch = tisch;
+
+    }
+
+    public Integer getTischslotid() {
+        return tischslotid;
+    }
+
+    public void setTischslotid(Integer tischslotid) {
+        this.tischslotid = tischslotid;
     }
 }
