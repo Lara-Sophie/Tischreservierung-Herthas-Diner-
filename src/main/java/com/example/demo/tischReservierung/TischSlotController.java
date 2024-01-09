@@ -36,3 +36,4 @@ public class TischSlotController {
         return ResponseEntity.ok(tischSlotService.getAll());
     }
 }
+

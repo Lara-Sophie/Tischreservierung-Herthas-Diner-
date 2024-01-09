@@ -11,16 +11,9 @@ public class ReservierungBody {
     private Integer kundenId;
 
     @JsonProperty("tischSlotId")
-    private Integer tischSlotIds;
+    private Integer tischSlotId;
 
-    @JsonProperty("startZeit")
-    private LocalDateTime startZeit;
 
-    @JsonProperty("endZeit")
-    private LocalDateTime endZeit;
-
-    @JsonProperty("personen")
-    private int personen;
 
 
     public ReservierungBody() {
@@ -34,35 +27,12 @@ public class ReservierungBody {
         this.kundenId = kundenId;
     }
 
-    public Integer getTischSlotIds() {
-        return tischSlotIds;
+    public Integer getTischSlotId() {
+        return tischSlotId;
     }
 
-    public void setTischSlotIds(Integer tischSlotIds) {
-        this.tischSlotIds = tischSlotIds;
+    public void setTischSlotId(Integer tischSlotIds) {
+        this.tischSlotId = tischSlotIds;
     }
 
-    public LocalDateTime getStartZeit() {
-        return startZeit;
-    }
-
-    public void setStartZeit(LocalDateTime startZeit) {
-        this.startZeit = startZeit;
-    }
-
-    public LocalDateTime getEndZeit() {
-        return endZeit;
-    }
-
-    public void setEndZeit(LocalDateTime endZeit) {
-        this.endZeit = endZeit;
-    }
-
-    public int getPersonen() {
-        return personen;
-    }
-
-    public void setPersonen(int personen) {
-        this.personen = personen;
-    }
 }

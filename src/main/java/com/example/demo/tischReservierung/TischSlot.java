@@ -7,17 +7,23 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table (name = "tischSlot")
+@Table (name = "tisch_slot")
 public class TischSlot {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tischslotid;
 
+
+
     @Column (name = "startzeit")
     private LocalDateTime Startzeit;
     @Column (name = "endzeit")
     private LocalDateTime Endzeit;
+
+    @Column (name = "reserviert")
+    private boolean reserviert;
 
 
 
@@ -27,6 +33,8 @@ public class TischSlot {
     @ManyToOne
     @JoinColumn(name = "tischid", nullable = false)
     private Tisch tisch;
+
+
 
     public TischSlot() {
     }
@@ -47,7 +55,13 @@ public class TischSlot {
         Endzeit = endzeit;
     }
 
+    public boolean isReserviert() {
+        return reserviert;
+    }
 
+    public void setReserviert(boolean reserviert) {
+        this.reserviert = reserviert;
+    }
 
     public Reservierung getReservierung() {
         return reservierung;

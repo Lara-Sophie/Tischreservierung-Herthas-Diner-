@@ -1,26 +1,24 @@
+
 ###
 POST http://localhost:8080/kunden
 Content-Type: application/json
 
 {
-  "id": 1,
+  "id": 10,
   "name": "Klaus",
   "email": "du@htw.de",
   "telefonnummer": "123456789",
   "allergien": "keine"
 
   }
+
 ###
 POST http://localhost:8080/reservierungen
 Content-Type: application/json
 
 {
-
   "kundenId": 1,
-  "tischIds": [1,2,3],
-  "startZeit" : "2021-06-01T12:00:00",
-  "endZeit" : "2021-06-01T13:00:00",
-  "personen": 3
+    "tischSlotId":1
 }
 
 ###
@@ -35,5 +33,32 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/tische/1
+POST http://localhost:8080/tischSlots
+Content-Type: application/json
+
+{
+  "tischId": 2,
+
+  "startzeit":
+
+}
+
+
+###
+DELETE http://localhost:8080/Kunden/1
+Content-Type: application/json
+
+
+###
+GET http://localhost:8080/kunden/1
+Content-Type: application/json
+
+
+
+###
+GET http://localhost:8080/tischSlot/1
+Content-Type: application/json
+
+###
+GET http://localhost:8080/reservierungen
 Content-Type: application/json

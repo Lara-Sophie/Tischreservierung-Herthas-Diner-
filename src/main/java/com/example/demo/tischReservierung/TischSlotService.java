@@ -22,9 +22,15 @@ public class TischSlotService {
     private TischRepository tischRepository;
 
     public TischSlot save(TischSlotBody tischSlotBody) {
+        TischSlot tischSlot = new TischSlot();
 
+        tischSlot.setStartzeit(tischSlotBody.getStartzeit());
+        tischSlot.setEndzeit(tischSlotBody.getStartzeit().plusHours(1));
+        tischSlot.setReserviert(false);
 
-        TischSlot tischSlot = buldTischSlot(tischSlotBody);
+        Tisch tisch = tischRepository.findById(tischSlotBody.getTischId()).orElseThrow(() -> new RuntimeException("Tisch nicht gefunden"));
+        tischSlot.setTisch(tisch);
+
         return repository.save(tischSlot);
     }
 
@@ -33,24 +39,11 @@ public class TischSlotService {
     }
 
     public TischSlot get(int id) {
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("Tisch nicht gefunden"));
+        return repository.findById(id).orElseThrow(() -> new RuntimeException("TischSlot nicht gefunden"));
     }
 
-    public List<TischSlot> getAll() {
-        return repository.findAll();
-    }
-
-    private TischSlot buldTischSlot(TischSlotBody tischSlotBody) {
-        Tisch tisch = tischRepository.findById(tischSlotBody.getTischId()).orElseThrow(() -> new RuntimeException("Tisch nicht gefunden"));;
-
-        LocalDateTime startzeit = tischSlotBody.getStartzeit();
+    public List<TischSlot> getAll(){ return repository.findAll();}
 
 
-        TischSlot tischSlot = new TischSlot();
-        tischSlot.setTisch(tisch);
-        tischSlot.setStartzeit(tischSlotBody.getStartzeit());
-        tischSlot.setEndzeit(tischSlotBody.getStartzeit().plusHours(1));
 
-        return tischSlot;
-    }
 }

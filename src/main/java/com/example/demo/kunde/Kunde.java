@@ -8,14 +8,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
+
 @Entity
-@Table(name = "kunden")
+@Table (name = "kunden")
 public class Kunde {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
 
     @Column (name = "name")
     private String name;
@@ -88,7 +88,13 @@ public class Kunde {
         this.reservierung = reservierung;
     }
 
+    public void addReservierung(Reservierung reservierung) {
+        this.reservierung.add(reservierung);
+    }
 
+    public void removeReservierung(Reservierung reservierung) {
+        this.reservierung.remove(reservierung);
+    }
 
 
     @Override

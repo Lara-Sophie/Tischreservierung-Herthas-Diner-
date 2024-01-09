@@ -5,7 +5,6 @@ import com.example.demo.tischReservierung.TischSlot;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -13,17 +12,8 @@ import java.util.Objects;
 public class Reservierung {
 
     @Id
-    @Column (name = "reservierungid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reservierungid;
-    @Column (name = "personenanzahl")
-    int personen;
-    @Column (name = "startzeit")
-    private LocalDateTime Startzeit;
-    @Column (name = "endzeit")
-    private LocalDateTime Endzeit;
-
-
 
 
     @ManyToOne
@@ -57,42 +47,23 @@ public class Reservierung {
         this.kunde = kunde;
     }
 
-
-    public LocalDateTime getStartzeit() {
-        return Startzeit;
+    public TischSlot getTischSlot() {
+        return tischSlot;
     }
 
-    public void setStartzeit(LocalDateTime startzeit) {
-        Startzeit = startzeit;
+    public void setTischSlot(TischSlot tischSlot) {
+        this.tischSlot = tischSlot;
     }
-
-    public LocalDateTime getEndzeit() {
-        return Endzeit;
-    }
-
-    public void setEndzeit(LocalDateTime endzeit) {
-        Endzeit = endzeit;
-    }
-
-    public int getPersonen() {
-        return personen;
-    }
-
-    public void setPersonen(int personen) {
-        this.personen = personen;
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Reservierung that)) return false;
-        return getId() == that.getId() && getPersonen() == that.getPersonen() && Objects.equals(getKunde(), that.getKunde())  && Objects.equals(getStartzeit(), that.getStartzeit()) && Objects.equals(getEndzeit(), that.getEndzeit());
+        return getId() == that.getId()  && Objects.equals(getKunde(), that.getKunde());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getKunde(), getStartzeit(), getEndzeit(), getPersonen());
+        return Objects.hash(getId(), getKunde());
     }
 }
