@@ -1,33 +1,34 @@
-package com.example.demo.Tisch;
+package com.example.demo.tisch;
+import com.example.demo.tischReservierung.TischSlot;
 
-
-
-import com.example.demo.Reservierung.Reservierung;
-import com.example.demo.ReservierungTische.ReservierungTische;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table (name = "tische")
 public class Tisch {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
+
 
 
     @Column(name = "anzahlplaetze")
     private int anzahlPlaetze;
-    @OneToMany(mappedBy = "tisch")
-    private List<ReservierungTische> reservierungTische = new LinkedList<>();
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "tisch")
+    private List<TischSlot> tischSlots;
 
 
     public Tisch() {
         // Default constructor required by JPA
     }
+
 
 
 
@@ -47,6 +48,18 @@ public class Tisch {
         this.anzahlPlaetze = anzahlPlaetze;
     }
 
+    public List<TischSlot> getTischSlots() {
+        return tischSlots;
+    }
+
+    public void removeTisch(TischSlot tischSlot) {
+        tischSlots.remove(tischSlot);
+    }
+
+    public void addTischSlot(TischSlot tischSlot) {
+        tischSlots.add(tischSlot);
+    }
+
 
 
 
@@ -56,11 +69,11 @@ public class Tisch {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Tisch tisch)) return false;
-        return getId() == tisch.getId() && getAnzahlPlaetze() == tisch.getAnzahlPlaetze() && Objects.equals(reservierungTische, tisch.reservierungTische);
+        return getId() == tisch.getId() && getAnzahlPlaetze() == tisch.getAnzahlPlaetze();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getAnzahlPlaetze(), reservierungTische);
+        return Objects.hash(getId(), getAnzahlPlaetze());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.demo.Reservierung;
+package com.example.demo.reservierung;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

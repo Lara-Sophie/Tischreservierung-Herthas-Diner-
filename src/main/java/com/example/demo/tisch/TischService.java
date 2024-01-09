@@ -1,4 +1,4 @@
-package com.example.demo.Tisch;
+package com.example.demo.tisch;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

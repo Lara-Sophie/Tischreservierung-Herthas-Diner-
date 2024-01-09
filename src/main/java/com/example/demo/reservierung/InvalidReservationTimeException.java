@@ -1,4 +1,4 @@
-package com.example.demo.Reservierung;
+package com.example.demo.reservierung;
 
 public class InvalidReservationTimeException extends Throwable {
     public InvalidReservationTimeException(String s) {
