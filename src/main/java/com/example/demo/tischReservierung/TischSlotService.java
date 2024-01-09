@@ -1,5 +1,8 @@
 package com.example.demo.tischReservierung;
 
+import com.example.demo.kunde.Kunde;
+import com.example.demo.reservierung.Reservierung;
+import com.example.demo.reservierung.ReservierungService;
 import com.example.demo.tisch.Tisch;
 import com.example.demo.tischReservierung.TischSlot;
 import com.example.demo.tischReservierung.TischSlotRepository;
@@ -21,6 +24,9 @@ public class TischSlotService {
     @Autowired
     private TischRepository tischRepository;
 
+    @Autowired
+    private ReservierungService reservierungService;
+
     public TischSlot save(TischSlotBody tischSlotBody) {
         TischSlot tischSlot = new TischSlot();
         tischSlot.setTischslotid(1);
@@ -38,6 +44,11 @@ public class TischSlotService {
     }
 
     public void delete(int id) {
+        TischSlot tischSlot = repository.findById(id).orElseThrow(() -> new RuntimeException("Kunde nicht gefunden"));
+        Reservierung reservierung = tischSlot.getReservierung();
+
+            reservierungService.delete(reservierung.getId());
+
         repository.deleteById(id);
     }
 

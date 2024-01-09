@@ -41,6 +41,8 @@ public class TischSlot {
     public TischSlot() {
     }
 
+
+
     public LocalDateTime getStartzeit() {
         return Startzeit;
     }
@@ -81,6 +83,7 @@ public class TischSlot {
         this.tisch = tisch;
 
     }
+
 
     public Integer getTischslotid() {
         return tischslotid;

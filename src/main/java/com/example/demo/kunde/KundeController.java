@@ -24,6 +24,7 @@ public class KundeController {
         return ResponseEntity.ok().build();
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<Kunde> getKunde(@PathVariable int id) {
         return ResponseEntity.ok(kundeService.get(id));
