@@ -3,9 +3,9 @@ package com.example.demo.reservierung;
 import com.example.demo.kunde.Kunde;
 import com.example.demo.tischReservierung.TischSlot;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -13,22 +13,16 @@ import java.util.Objects;
 public class Reservierung {
 
     @Id
-    @Column (name = "reservierungid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reservierungid;
 
-    @Column (name = "startzeit")
-    private LocalDateTime Startzeit;
-    @Column (name = "endzeit")
-    private LocalDateTime Endzeit;
-
-
-
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "kundenid")
     private Kunde kunde;
 
+
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tischslotid", referencedColumnName = "tischslotid")
     private TischSlot tischSlot;
@@ -56,34 +50,23 @@ public class Reservierung {
         this.kunde = kunde;
     }
 
-
-    public LocalDateTime getStartzeit() {
-        return Startzeit;
+    public TischSlot getTischSlot() {
+        return tischSlot;
     }
 
-    public void setStartzeit(LocalDateTime startzeit) {
-        Startzeit = startzeit;
+    public void setTischSlot(TischSlot tischSlot) {
+        this.tischSlot = tischSlot;
     }
-
-    public LocalDateTime getEndzeit() {
-        return Endzeit;
-    }
-
-    public void setEndzeit(LocalDateTime endzeit) {
-        Endzeit = endzeit;
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Reservierung that)) return false;
-        return getId() == that.getId()  && Objects.equals(getKunde(), that.getKunde())  && Objects.equals(getStartzeit(), that.getStartzeit()) && Objects.equals(getEndzeit(), that.getEndzeit());
+        return getId() == that.getId()  && Objects.equals(getKunde(), that.getKunde());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getKunde(), getStartzeit(), getEndzeit());
+        return Objects.hash(getId(), getKunde());
     }
 }

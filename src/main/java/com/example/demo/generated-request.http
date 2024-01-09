@@ -1,3 +1,4 @@
+
 ###
 POST http://localhost:8080/kunden
 Content-Type: application/json
@@ -10,17 +11,14 @@ Content-Type: application/json
   "allergien": "keine"
 
   }
+
 ###
 POST http://localhost:8080/reservierungen
 Content-Type: application/json
 
 {
-
   "kundenId": 1,
-  "tischIds": [1,2,3],
-  "startZeit" : "2021-06-01T12:00:00",
-  "endZeit" : "2021-06-01T13:00:00",
-  "personen": 3
+    "tischSlotId":1
 }
 
 ###
@@ -36,5 +34,27 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8080/kunden/1
+Content-Type: application/json
+
+
+
+
+###
+DELETE http://localhost:8080/kunden/9
+Content-Type: application/json
+
+
+###
+GET http://localhost:8080/reservierungen
+Content-Type: application/json
+
+
+
+###
+GET http://localhost:8080/tischSlot/1
+Content-Type: application/json
+
+###
+GET http://localhost:8080/reservierungen
 Content-Type: application/json
 
