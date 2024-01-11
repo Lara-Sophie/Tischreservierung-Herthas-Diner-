@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tischSlot")
+@RequestMapping("/")
 public class TischSlotController {
 
     @Autowired

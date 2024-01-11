@@ -45,7 +45,7 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:8080/kunden/9
+DELETE http://localhost:8080/tische/26
 Content-Type: application/json
 
 
@@ -56,7 +56,7 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:8080/tischSlot/1
+GET http://localhost:8080/reservierungen/1
 Content-Type: application/json
 
 ###
