@@ -47,8 +47,9 @@ public class TischSlotService {
         TischSlot tischSlot = repository.findById(id).orElseThrow(() -> new RuntimeException("Kunde nicht gefunden"));
         Reservierung reservierung = tischSlot.getReservierung();
 
+        if (reservierung != null) {
             reservierungService.delete(reservierung.getId());
-
+        }
         repository.deleteById(id);
     }
 

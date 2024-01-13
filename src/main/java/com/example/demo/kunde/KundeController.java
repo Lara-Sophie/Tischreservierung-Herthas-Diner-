@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/kunden")
 public class KundeController {
@@ -13,6 +14,7 @@ public class KundeController {
     @Autowired
     private KundeService kundeService;
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<Kunde> createKunde(@RequestBody Kunde kunde) {
         return ResponseEntity.ok(kundeService.save(kunde));
