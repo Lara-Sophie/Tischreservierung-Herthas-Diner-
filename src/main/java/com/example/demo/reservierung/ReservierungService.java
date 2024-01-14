@@ -33,7 +33,6 @@ public class ReservierungService {
 
     public Reservierung save(ReservierungBody reservierungBody) {
         Reservierung reservierung = new Reservierung();
-        reservierung.setId(1);
         Kunde kunde = kundeRepository.findById(reservierungBody.getKundenId()).orElseThrow(() -> new RuntimeException("Kunde nicht gefunden"));
         kunde.addReservierung(reservierung);
         reservierung.setKunde(kunde);
