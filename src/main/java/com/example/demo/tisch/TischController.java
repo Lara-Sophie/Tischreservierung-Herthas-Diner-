@@ -18,6 +18,7 @@ public class TischController {
         return ResponseEntity.ok(tischService.save(tisch));
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTisch(@PathVariable int id) {
         tischService.delete(id);

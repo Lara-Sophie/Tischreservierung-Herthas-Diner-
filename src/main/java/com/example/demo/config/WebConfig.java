@@ -15,8 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**").allowedMethods("*")
                 .allowedOrigins("http://localhost:5173",
                         "http://localhost:5173/registrieren",
-                        "http://localhost:5173/admin",
-                "http://localhost:5173/reservieren");
+                "http://localhost:5173/reservieren", "http://localhost:5173/admin");
 
 
 
