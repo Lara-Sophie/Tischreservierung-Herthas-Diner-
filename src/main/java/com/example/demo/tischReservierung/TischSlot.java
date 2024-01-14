@@ -38,6 +38,7 @@ public class TischSlot {
 
 
 
+
     public TischSlot() {
     }
 
