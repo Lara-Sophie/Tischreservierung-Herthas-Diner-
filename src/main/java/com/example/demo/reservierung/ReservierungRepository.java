@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface ReservierungRepository extends JpaRepository<Reservierung, Integer> {
     // Standard JPA Repository-Methoden
     Optional<Reservierung> findById(Integer tischId);
+
+    Optional<Reservierung>findAllByKundeId(Integer kundeId);
 }

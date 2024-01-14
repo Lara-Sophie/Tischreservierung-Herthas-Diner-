@@ -58,8 +58,8 @@ public class ReservierungService {
         reservierungRepository.deleteById(id);
     }
 
-    public Reservierung get(int id) {
-        return reservierungRepository.findById(id).orElseThrow(() -> new RuntimeException("Reservierung nicht gefunden"));
+    public Reservierung getAllByKundenID(int id) {
+        return reservierungRepository.findAllByKundeId(id).orElseThrow(() -> new RuntimeException("Reservierung nicht gefunden"));
     }
 
     public List<Reservierung> getAll() {

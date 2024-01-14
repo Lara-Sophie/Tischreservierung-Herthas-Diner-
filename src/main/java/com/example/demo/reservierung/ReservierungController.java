@@ -28,8 +28,8 @@ import java.util.List;
         }
 
         @GetMapping("/{id}")
-        public ResponseEntity<Reservierung> getReservierung(@PathVariable int id) {
-            return ResponseEntity.ok(reservierungService.get(id));
+        public ResponseEntity<Reservierung> getReservierungenByKundenId(@PathVariable int id) {
+            return ResponseEntity.ok(reservierungService.getAllByKundenID(id));
         }
 
         @GetMapping
