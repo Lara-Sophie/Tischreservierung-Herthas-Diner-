@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/slots")
 public class TischSlotController {
 
     @Autowired
@@ -27,11 +27,13 @@ public class TischSlotController {
         return ResponseEntity.ok().build();
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public ResponseEntity<TischSlot> getTischSlot(@PathVariable int id) {
         return ResponseEntity.ok(tischSlotService.get(id));
     }
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<List<TischSlot>> getAllTischSlots() {
         return ResponseEntity.ok(tischSlotService.getAll());

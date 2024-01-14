@@ -31,7 +31,7 @@ public class TischSlot {
     @OneToOne(mappedBy = "tischSlot")
     private Reservierung reservierung;
 
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "tischid", nullable = false)
     private Tisch tisch;
